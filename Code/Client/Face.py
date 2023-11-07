@@ -35,10 +35,13 @@ class  Face:
         labels = []
         for imagePath in imagePaths:
             if os.path.split(imagePath)[-1].split(".")[1]=="jpg":
+                print(imagePath)
                 id = int(os.path.split(imagePath)[-1].split(".")[0])
+                print(id)
                 img = cv2.imread(imagePath)
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 faces = self.detector.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5)
+                print(faces)
                 for (x,y,w,h) in faces:
                     faceSamples.append(gray[y:y+h,x:x+w])
                     labels.append(id)
